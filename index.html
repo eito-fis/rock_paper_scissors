@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Rock Paper Scissors</title>
+		<meta charset="utf-8">
+		<script>
+			function computerPlay() {
+				const choice = Math.random() * 3;
+				if (choice < 1) {
+					return "Rock";
+				} else if (choice < 2) {
+					return "Paper";
+				} else {
+					return "Scissors";
+				}
+			}
+
+			function playRound(playerSelection, computerSelection) {
+				let pS = playerSelection.toLowerCase();
+				let cS = computerSelection.toLowerCase();
+				if ((pS == "rock" && cS == "paper") ||
+						(pS == "paper" && cS == "scissors") ||
+						(pS == "scissors" && cS == "rock")) {
+					return "You lose! " + computerSelection + " beats " + playerSelection;
+				} else if ((cS == "rock" && pS == "paper") ||
+									 (cS == "paper" && pS == "scissors") ||
+									 (cS == "scissors" && pS == "rock")) {
+					return "You win! " + playerSelection + " beats " + computerSelection;
+				} else {
+					return "Tie!" + playerSelection + " and " + computerSelection;
+				}
+			}
+
+			function game() {
+				for (let i = 0; i < 5; i++) {
+					let computerSelection = computerPlay();
+					let playerSelection = prompt("Choose 'rock', 'paper', or 'scissors'");
+					while ((playerSelection.toLowerCase() != "rock") &&
+								 (playerSelection.toLowerCase() != "paper") &&
+							   (playerSelection.toLowerCase() != "scissors")) {
+						playerSelection = prompt("Choose 'rock', 'paper', or 'scissors'");
+					}
+					console.log(playRound(playerSelection, computerSelection));
+				}
+			}
+
+			game();
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
